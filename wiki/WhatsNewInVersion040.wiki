@@ -1,6 +1,4 @@
-*What's new in version 0.4.0*
-
-This is a major update. 
+*This is a fairly major update.*
 
 IPlayable, IPlayableBase, and !PlayableBase are reorganized so that !PlayableBase does not implement IPlayable. 
 
