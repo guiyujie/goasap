@@ -1,0 +1,11 @@
+*What's new in version 0.4.0*
+
+This is a major update. 
+
+IPlayable, IPlayableBase, and !PlayableBase are reorganized so that !PlayableBase does not implement IPlayable. 
+
+Sequence.addStepAt parameters were switched to match !DisplayObjectContainer.addChildAt(). 
+
+!GoEngine has been rewritten again for some very successful optimization, and adds an internal caching mechanism that keeps animations in sync during sequence advance.
+
+!TweenBencher 1.6 now includes a memory meter so you can keep an eye peeled for memory leaks in your animation systems.
