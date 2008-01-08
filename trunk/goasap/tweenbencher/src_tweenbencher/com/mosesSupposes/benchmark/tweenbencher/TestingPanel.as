@@ -391,7 +391,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			uiContainer_mc.addChild(label);
 			
 			input = new TextInput();
-			input.width = 20;
+			input.width = 30;
 			input.move(guide2, runningY);
 			mult_txt = input;
 			uiContainer_mc.addChild(input);
