@@ -6,4 +6,4 @@ Sequence.addStepAt parameters were switched to match !DisplayObjectContainer.add
 
 !GoEngine has been rewritten again for some very successful optimization (new charts! [http://www.goasap.org/info.html#benchmarks]), and adds an internal caching mechanism that keeps animations in sync during sequence advance.
 
-!TweenBencher 1.6 now includes a memory meter so you can keep an eye peeled for memory leaks in your animation systems.
+TweenBencher 1.6 now includes a memory meter so you can keep an eye peeled for memory leaks in your animation systems.
