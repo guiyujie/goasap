@@ -22,39 +22,40 @@
  */
  
 package com.mosesSupposes.benchmark.tweenbencher {
-	import flash.display.Graphics;	
-	import flash.display.MovieClip;	
-	import flash.display.Sprite;	
-	import flash.events.Event;	
-	import flash.events.EventDispatcher;	
-	import flash.events.MouseEvent;	
-	import flash.events.TimerEvent;	
-	import flash.system.System;	
-	import flash.text.TextField;	
-	import flash.text.TextFormat;	
-	import flash.utils.Timer;	
-	import flash.utils.describeType;	
-	import flash.utils.getTimer;	
+	import flash.display.Graphics;
+	import flash.display.MovieClip;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.events.MouseEvent;
+	import flash.events.TimerEvent;
+	import flash.net.LocalConnection;
+	import flash.system.System;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import flash.utils.Timer;
+	import flash.utils.describeType;
+	import flash.utils.getTimer;
 	
-	import com.mosesSupposes.benchmark.BenchmarkEvent;	
-	import com.mosesSupposes.benchmark.BenchmarkResults;	
-	import com.mosesSupposes.benchmark.BenchmarkStatus;	
-	import com.mosesSupposes.benchmark.CycleMarker;	
-	import com.mosesSupposes.benchmark.FrameMarker;	
-	import com.mosesSupposes.benchmark.InitializationCompleteMarker;	
-	import com.mosesSupposes.benchmark.Marker;	
-	import com.mosesSupposes.benchmark.SecondMarker;	
-	import com.mosesSupposes.benchmark.tweenbencher.tests.BenchmarkBase;	
+	import com.mosesSupposes.benchmark.BenchmarkEvent;
+	import com.mosesSupposes.benchmark.BenchmarkResults;
+	import com.mosesSupposes.benchmark.BenchmarkStatus;
+	import com.mosesSupposes.benchmark.CycleMarker;
+	import com.mosesSupposes.benchmark.FrameMarker;
+	import com.mosesSupposes.benchmark.InitializationCompleteMarker;
+	import com.mosesSupposes.benchmark.Marker;
+	import com.mosesSupposes.benchmark.SecondMarker;
+	import com.mosesSupposes.benchmark.tweenbencher.tests.BenchmarkBase;
 	
-	import fl.controls.Button;	
-	import fl.controls.TextInput;
-	
+	import fl.controls.Button;
+	import fl.controls.TextInput;		
+
 	/**
 	 * TweenBencher
 	 * 
 	 * AS3 SCRIPTED-MOTION BENCHMARK UTILITY
 	 * -------------------------------------
-	 * @version: 1.5 (1st public release) 
+	 * @version: 1.6 
 	 * (c) Moses Gunesch, MosesSupposes.com
 	 * Please retain this full header block when modifying or redistributing this source.
 	 * 
@@ -131,6 +132,8 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		protected var tweensDone:Number;
 		protected var currentCycleMarker : CycleMarker;		
 		protected var cycleFlag : int;		
+		protected var beginRemoveTime : int;
+		protected var baselineMemory : Number;	
 		
 		// charting
 		protected var totalTxts:Array;
@@ -150,8 +153,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		protected var millisecondStep : Number;		
 		protected var chart1Title:String = "Active Framerate (sections=seconds)";
 		protected var chart2Title:String = "Totals (sections=test cycles. dots=averages)";		
-		protected var killSwitchBtn : Button;	
-		
+		protected var killSwitchBtn : Button;		
 		
 		public function TweenBencher() {
 //			trace("TweenBencher instantiated.");
@@ -189,6 +191,13 @@ package com.mosesSupposes.benchmark.tweenbencher {
 					for each (var tf:TextField in totalTxts)
 						(this["totals_mc"] as MovieClip).removeChild(tf);
 				}
+				
+				// HACK: forces a GC sweep
+				try {
+				   new LocalConnection().connect('foo');
+				   new LocalConnection().connect('foo');
+					// the GC will perform a full mark/sweep on the second call.
+				} catch (e:Error) {}
 			}
 			
 			// setup
@@ -262,6 +271,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			refreshTimer.addEventListener( TimerEvent.TIMER, refresh);
 			drawBufferTimer = new Timer(1000, 1);
 			drawBufferTimer.addEventListener( TimerEvent.TIMER, completeSpriteDraw);
+			baselineMemory = (Math.round(System.totalMemory/1048576)); // This is set once at start of test.
 			
 			if (bench) { // a benchmark call was made before setup was complete, cached - run now.
 				this.benchmark(bench);
@@ -276,6 +286,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			spritesDrawn = 0;
 			killSwitchBtn.enabled = true; // kill is allowed during sprite draw
 			this.addEventListener(Event.ENTER_FRAME, spriteDraw); // buffer a frame
+			refreshTimer.start();
 		}
 		
 		/**
@@ -306,7 +317,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 				if (i==numSprites) {
 					this.removeEventListener(Event.ENTER_FRAME, spriteDraw);
 					textOutput.text = numSprites + " Sprites Rendered. Adding tweens...";
-					drawBufferTimer.start();
+					drawBufferTimer.start(); // calls completeSpriteDraw once after a delay.
 					return;
 				}
 			}
@@ -324,7 +335,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		}
 		
 		/**
-		 * Completes spriteDraw, after a 1-frame buffer during long draws.
+		 * Completes spriteDraw, after a 1-second buffer to allow draw to finish.
 		 */
 		protected function completeSpriteDraw(e:TimerEvent) : void 
 		{
@@ -335,7 +346,6 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			addCycleTweens();
 			
 			if (!timedOut && !aborted) {
-				refreshTimer.start();
 				textOutput.text = String(numSprites) + " SPRITES.  ";
 			}
 		}
@@ -417,18 +427,25 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		 */
 		protected function refresh(event:TimerEvent=null) : void
 		{
-			if (currentCycleMarker.secondsCount>0) {
-				// update the onscreen textfield display
-					textOutput2.htmlText = "CURRENT FPS:"+ currentCycleMarker.averageFPS.toString()
-											+ "  ::  MAX:" +currentCycleMarker.highestFPS.toString()
-											+ "  ::  MIN:"+currentCycleMarker.lowestFPS.toString()
-											+ "  ::  <b>CYCLE FPS:"+ currentCycleMarker.averageFPS.toString()+ "</b> / " + stage.frameRate
-											+ "  ::  TOTAL FPS:"+ results.totalFPS.toString() + " / " + stage.frameRate;
-				// chart
-				if (!bench.animateGraphs && bench.graphFPS) {
-					chartActiveFramerate();
+			if (!isNaN(tweensDone)) {
+				if (currentCycleMarker.secondsCount>0) {
+					// update the onscreen textfield display
+						textOutput2.htmlText = "CURRENT FPS:"+ currentCycleMarker.averageFPS.toString()
+												+ "  ::  MAX:" +currentCycleMarker.highestFPS.toString()
+												+ "  ::  MIN:"+currentCycleMarker.lowestFPS.toString()
+												+ "  ::  <b>CYCLE FPS:"+ currentCycleMarker.averageFPS.toString()+ "</b> / " + stage.frameRate
+												+ "  ::  TOTAL FPS:"+ results.totalFPS.toString() + " / " + stage.frameRate;
+					// chart
+					if (!bench.animateGraphs && bench.graphFPS) {
+						chartActiveFramerate();
+					}
 				}
 			}
+			
+			// Displays the swf's current memory usage, minus the baseline at setup.
+			var memInMB:Number = (Math.round(System.totalMemory/1048576) - baselineMemory);
+			(this["memUsage_txt"] as TextField).text = String( memInMB ) + " MB";
+			(this["memUsage_mc"] as MovieClip).width = Math.min(memInMB, 520); // limit to stay on page
 		}
 				
 		/**
@@ -461,6 +478,9 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		public function onMotionEnd():void
 		{
 			//trace("onMotionEnd :: "+(tweensDone+1));
+			if (tweensDone==0)
+				beginRemoveTime = getTimer();
+			
 			if ( !busy || (!timedOut && ++tweensDone < numSprites) ) 
 				return;
 			
@@ -477,6 +497,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			// Results
 			var result:String = (numSprites+" Sprites	::	Start Lag: "+ currentCycleMarker.initializationStatus
 								+"	::	FPS: " + (currentCycleMarker.averageFPS || 0));
+			result +=("	::	End lag: "+(Math.round((getTimer()-beginRemoveTime)/10)/100));
 			trace(result);
 			clipboardTxt += result + "\n";
 			
@@ -503,7 +524,7 @@ package com.mosesSupposes.benchmark.tweenbencher {
 		 */
 		protected function complete():void
 		{
-			// Clear (safety in case called from a method other than onMotionEnd)
+			// Clear
 			refreshTimer.reset();
 			this.removeEventListener(Event.ENTER_FRAME, onFrame);
 			
@@ -523,8 +544,10 @@ package com.mosesSupposes.benchmark.tweenbencher {
 			dispatchEvent(new BenchmarkEvent(BenchmarkEvent.COMPLETE, results));
 			
 			System.setClipboard(clipboardTxt);
+			refresh();
 			busy = false;
 			killSwitchBtn.enabled = false;
+			tweensDone = NaN;
 		}
 		
 		// -== Charting Methods ==-
