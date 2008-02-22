@@ -79,9 +79,10 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		/**
 		 * Mandatory. Important! Subclasses MUST call super.onMotionEnd(), so _bencher can do its thing.
 		 * Each tween added must trigger this event/callback as it completes. 
-		 * Unsubscribe all listeners on the tween here.
+		 * Unsubscribe all listeners on the tween here. 
+		 * The event input is untyped so you can use custom callbacks instead.
 		 */
-		protected function onMotionEnd(event:Event=null):void
+		protected function onMotionEnd(event:*=null):void
 		{
 			_bencher.onMotionEnd(); // Necessary!
 		}

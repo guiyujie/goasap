@@ -26,12 +26,12 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 	import flash.events.Event;
 	
 	import org.goasap.events.GoEvent;
-	import org.goasap.items.GoItem;
 	
 	import com.mosesSupposes.benchmark.BenchmarkEvent;
 	import com.mosesSupposes.benchmark.tweenbencher.TweenBencher;
-	import com.mosesSupposes.go.tutorials.WidthTween;	
-	import fl.motion.easing.*;
+	import com.mosesSupposes.go.tutorials.WidthTween;
+	
+	import fl.motion.easing.*;	
 
 	/**
 	 * @author Moses Gunesch / mosessupposes.com (c) 
@@ -42,16 +42,9 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 * This constructor adds an easy way further subclasses can append to the name.
 		 * @see com.mosesSupposes.benchmark.tweenbencher.tests.GoBenchmark2
 		 */
-		public function GoBenchmark(tweenBencher : TweenBencher, appendToName:String="") 
+		public function GoBenchmark(tweenBencher : TweenBencher) 
 		{
-			super(tweenBencher, "Go - WidthTween" + appendToName);
-			
-			// If the engine gives an interval option (vs. enterframe), 33ms is usally smoothest.
-			GoItem.defaultPulseInterval = 33;
-
-			// Secondary benchmark option: Go + GoOverlapMonitor: Affects start-lags
-//			GoEngine.addManager( new GoOverlapMonitor() );
-//			benchmarkName += " + GoOverlapMonitor";
+			super(tweenBencher, "Go - WidthTween");
 		}
 
 		/**
@@ -78,7 +71,7 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 * Each tween added must trigger this event/callback as it completes. 
 		 * Unsubscribe all listeners on the tween here.
 		 */
-		protected override function onMotionEnd(event:Event=null):void
+		protected override function onMotionEnd(event:*=null):void
 		{
 			var go:WidthTween = (event.target as WidthTween);
 //			go.removeEventListener( GoEvent.START, anEvent);
