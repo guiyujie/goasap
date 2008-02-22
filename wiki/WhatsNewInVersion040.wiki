@@ -1,9 +1,17 @@
-*This is a fairly major update.*
+*0.4.2 notes*
 
-IPlayable, IPlayableBase, and !PlayableBase are reorganized so that !PlayableBase does not implement IPlayable. 
+  * Totally new tests package with !GoTestBase class and tutorial classes
+  * The tutorial class SizeTweenMG renamed slightly (was Mg) and updated a little
+  * !GoItem now sports a smoother defaultPulseInterval of 33
+  * Sequence Looping feature added: repeatCount & currentCount props added
+  * Sequences now should not be GC'd while running if you don't store a ref to them
+  * SequenceCA: Many changes and fixes mostly dealing with _trailingTweens
+  * !TweenBencher updated for use with this version.
 
-Sequence.addStepAt parameters were switched to match !DisplayObjectContainer.addChildAt(). 
 
-!GoEngine has been rewritten again for some very successful optimization (new charts! [http://www.goasap.org/info.html#benchmarks]), and adds an internal caching mechanism that keeps animations in sync during sequence advance.
+*0.4.0 notes*
 
-TweenBencher 1.6 now includes a memory meter so you can keep an eye peeled for memory leaks in your animation systems.
+  * IPlayable, IPlayableBase, and !PlayableBase are reorganized so that !PlayableBase does not implement IPlayable. 
+  * Sequence.addStepAt parameters were switched to match !DisplayObjectContainer.addChildAt(). 
+  * !GoEngine has been rewritten again for some very successful optimization (new charts! [http://www.goasap.org/info.html#benchmarks]), and adds an internal caching mechanism that keeps animations in sync during sequence advance.
+  * TweenBencher 1.6 now includes a memory meter so you can keep an eye peeled for memory leaks in your animation systems.
