@@ -60,7 +60,7 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 * Each tween added must trigger this event/callback as it completes. 
 		 * Unsubscribe all listeners on the tween here.
 		 */
-		protected override function onMotionEnd(event:Event=null):void
+		protected override function onMotionEnd(event:*=null):void
 		{
 			
 			// This line is mandatory!

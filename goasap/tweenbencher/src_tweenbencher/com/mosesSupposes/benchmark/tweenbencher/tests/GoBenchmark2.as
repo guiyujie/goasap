@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2007 Moses Gunesch
  * 
@@ -26,14 +25,14 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 	import flash.events.Event;
 	
 	import org.goasap.GoEngine;
-	import org.goasap.managers.OverlapMonitor;
 	import org.goasap.events.GoEvent;
-	import org.goasap.items.GoItem;
+	import org.goasap.managers.OverlapMonitor;
 	
 	import com.mosesSupposes.benchmark.BenchmarkEvent;
 	import com.mosesSupposes.benchmark.tweenbencher.TweenBencher;
-	import com.mosesSupposes.go.tutorials.SizeTweenMg;	
-	import fl.motion.easing.*;
+	import com.mosesSupposes.go.tutorials.SizeTweenMG;
+	
+	import fl.motion.easing.*;	
 
 	/**
 	 * @author Moses Gunesch / mosessupposes.com (c) 
@@ -44,19 +43,13 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 * This constructor adds an easy way further subclasses can append to the name.
 		 * @see com.mosesSupposes.benchmark.tweenbencher.tests.GoBenchmark2
 		 */
-		public function GoBenchmark2(tweenBencher : TweenBencher, appendToName:String="") 
+		public function GoBenchmark2(tweenBencher : TweenBencher) 
 		{
-			super(tweenBencher, "Go - SizeTweenMg" + appendToName);
+			super(tweenBencher, "Go - SizeTweenMG+OverlapMonitor");
 			
-			// If the engine gives an interval option (vs. enterframe), 33ms is usally smoothest.
-			GoItem.defaultPulseInterval = 33;
+			// Go + GoOverlapMonitor: Affects start-lags
 			if (!GoEngine.getManager("OverlapMonitor"))
 				GoEngine.addManager( new OverlapMonitor() );
-			benchmarkName += " + OverlapMonitor";
-			
-			// Secondary benchmark option: Go + GoOverlapMonitor: Affects start-lags
-//			GoEngine.addManager( new GoOverlapMonitor() );
-//			benchmarkName += " + GoOverlapMonitor";
 		}
 
 		/**
@@ -68,7 +61,7 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 */
 		public override function addTween(target:Sprite, firstInNewSet:Boolean):void
 		{
-			var go:SizeTweenMg = new SizeTweenMg (target, 760, NaN, 0, tweenDuration, Exponential.easeInOut);
+			var go:SizeTweenMG = new SizeTweenMG (target, 760, NaN, 0, tweenDuration, Exponential.easeInOut);
 			
 			// Separate test: events typically slow things down.
 //			go.addEventListener(GoEvent.START, anEvent);
@@ -83,9 +76,9 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		 * Each tween added must trigger this event/callback as it completes. 
 		 * Unsubscribe all listeners on the tween here.
 		 */
-		protected override function onMotionEnd(event:Event=null):void
+		protected override function onMotionEnd(event:*=null):void
 		{
-			var go:SizeTweenMg = (event.target as SizeTweenMg);
+			var go:SizeTweenMG = (event.target as SizeTweenMG);
 //			go.removeEventListener( GoEvent.START, anEvent);
 //			go.removeEventListener( GoEvent.UPDATE, anEvent);
 

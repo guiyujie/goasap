@@ -21,7 +21,8 @@
  * THE SOFTWARE.
  */
  
-package com.mosesSupposes.benchmark.tweenbencher.tests {	
+package com.mosesSupposes.benchmark.tweenbencher.tests {
+	import flash.events.Event;	
 	import flash.display.Sprite;	
 	import flash.events.TimerEvent;	
 	import flash.utils.Timer;	
@@ -65,9 +66,14 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 			super(tweenBencher, "Simple AS3 Tween");
 			
 			tweens = new Array();
+			
+			// Use Timer
 			pulse = new Timer(33);
 			pulse.addEventListener(TimerEvent.TIMER, update);
 			pulse.start();
+
+			// Or: Use ENTER_FRAME
+//			tweenBencher.stage.addEventListener(Event.ENTER_FRAME, update);
 		}
 		
 		public override function addTween(target:Sprite, firstInNewSet:Boolean):void {
@@ -81,7 +87,7 @@ package com.mosesSupposes.benchmark.tweenbencher.tests {
 		}		
 		
 		// atypical - specific to this test.
-		protected function update(event:TimerEvent):void {
+		protected function update(event:Event):void {
 			var time:Number = getTimer();
 			var i:Number = tweens.length;
 			while (--i>-1) {
