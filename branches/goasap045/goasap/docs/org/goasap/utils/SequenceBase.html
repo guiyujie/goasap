@@ -1,0 +1,929 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
+<meta content="SequenceBase,org.goasap.utils.SequenceBase,length,playIndex,repeater,steps,_addStep,_addStepAt,_getCurrentStep,_getLastStep,_getStepAt,_getStepByID,_removeStepAt,pause,resume,skipTo,start,stop" name="keywords">
+<title>org.goasap.utils.SequenceBase</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'SequenceBase - Documentation';
+				var baseRef = '../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../all-classes.html')" href="../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../index-list.html')" href="../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../index.html?org/goasap/utils/SequenceBase.html&amp;org/goasap/utils/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;SequenceBase</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class SequenceBase"); titleBar_setSubNav(true,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.goasap.utils</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class SequenceBase</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">SequenceBase <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> <a href="../PlayableBase.html">PlayableBase</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../interfaces/IPlayable.html">IPlayable</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../utils/Sequence.html">Sequence</a>, <a href="../utils/SequenceCA.html">SequenceCA</a></td>
+</tr>
+</table>
+<p></p>
+  This base class should not be used directly, use it to build sequencing classes.
+  
+  <p>When subclassing, follow the instructions in the comments of the protected
+  methods to add a standard set of public getters and methods that work with the
+  specific datatype of your SequenceStep subclass, if you create one. (This system
+  is designed to work around the restrictiveness of overrides in AS3 which don't
+  allow you to redefine datatypes.) See Sequence and SequenceCA for examples.</p>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Sequence.html" target="">Sequence</a>
+<br>
+<a href="SequenceCA.html" target="">SequenceCA</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#id">id</a> : *<div class="summaryTableDescription">
+   An arbitrary id value for the convenient identification of any
+   instance, automatically set to an instance count by this class.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#length">length</a> : int<div class="summaryTableDescription">[read-only]
+   The number of steps in the sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#playIndex">playIndex</a> : int<div class="summaryTableDescription">[read-only]
+   The current play index of the sequence, starting a 0.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#repeater">repeater</a> : <a href="../managers/Repeater.html">Repeater</a>
+<div class="summaryTableDescription">[read-only]
+   The sequence's Repeater instance, which may be used to make
+   the sequence loop and play more than one time.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#state">state</a> : String<div class="summaryTableDescription">
+   Returns the value of one of this class' play-state constants.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#steps">steps</a> : Array<div class="summaryTableDescription">
+   Get or set the list of SequenceStep instances that defines the sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#_playRetainer">_playRetainer</a> : Dictionary<div class="summaryTableDescription">[static]
+   Memory-management: Read this if you're subclassing PlayableBase but not adding your
+   instance to GoEngine.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#SequenceBase()">SequenceBase</a>(... items)</div>
+<div class="summaryTableDescription">
+   Constructor.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pause()">pause</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Pauses sequence play.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resume()">resume</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Resumes previously-paused sequence play.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#skipTo()">skipTo</a>(index:Number):Boolean</div>
+<div class="summaryTableDescription">
+   Stops the current step and skips to another step by sequence index.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#start()">start</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Begins a sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#stop()">stop</a>():Boolean</div>
+<div class="summaryTableDescription">
+   Stops all activity and dispatches a GoEvent.STOP event.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../PlayableBase.html#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+   Appends the regular toString value with the instance's id.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_addStep()">_addStep</a>(item:<a href="../interfaces/IPlayable.html">IPlayable</a>, addToLastStep:Boolean = false, stepTypeAsClass:* = null):int</div>
+<div class="summaryTableDescription">
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_addStepAt()">_addStepAt</a>(index:int, item:<a href="../interfaces/IPlayable.html">IPlayable</a>, stepTypeAsClass:* = null):int</div>
+<div class="summaryTableDescription">
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_getCurrentStep()">_getCurrentStep</a>():*</div>
+<div class="summaryTableDescription">
+   Developers: Add a getter called <code>currentStep</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_getLastStep()">_getLastStep</a>():*</div>
+<div class="summaryTableDescription">
+   Developers: Add a getter called <code>lastStep</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_getStepAt()">_getStepAt</a>(index:int):*</div>
+<div class="summaryTableDescription">
+   Developers: Add a method called <code>getStepAt</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_getStepByID()">_getStepByID</a>(id:*):*</div>
+<div class="summaryTableDescription">
+   Developers: Add a method called <code>getStepByID</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#_removeStepAt()">_removeStepAt</a>(index:int):*</div>
+<div class="summaryTableDescription">
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.</div>
+</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:ADVANCE">ADVANCE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence advances to its next step.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:COMPLETE">COMPLETE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence successfully finishes.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:CYCLE">CYCLE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched at the end the sequence if <code>repeatCount</code> is
+  higher than one, just before the sequence starts its next play cycle.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:PAUSE">PAUSE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence is paused successfully.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:RESUME">RESUME</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence is resumed successfully.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:START">START</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence starts.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:STOP">STOP</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the sequence is manually stopped, which may also occur
+  if one of its step instances is manually stopped outside the sequence.</td><td class="summaryTableOwnerCol">SequenceBase</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<div class="showHideLinks">
+<div class="hideInheritedConstant" id="hideInheritedConstant">
+<a onclick="javascript:setInheritedVisible(false,'Constant');" href="#constantSummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Constants</a>
+</div>
+<div class="showInheritedConstant" id="showInheritedConstant">
+<a onclick="javascript:setInheritedVisible(true,'Constant');" href="#constantSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Constants</a>
+</div>
+</div>
+<table id="summaryTableConstant" class="summaryTable hideInheritedConstant" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#PAUSED">PAUSED</a> : String = "PAUSED"<div class="summaryTableDescription">[static]
+   Instance play is currently paused.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#PLAYING">PLAYING</a> : String = "PLAYING"<div class="summaryTableDescription">[static]
+   Instance play is currently playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#PLAYING_DELAY">PLAYING_DELAY</a> : String = "PLAYING_DELAY"<div class="summaryTableDescription">[static]
+   Instance is currently playing a delay, but has not started playing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+<tr class="hideInheritedConstant">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../PlayableBase.html#STOPPED">STOPPED</a> : String = "STOPPED"<div class="summaryTableDescription">[static]
+   Instance play is currently stopped.</div>
+</td><td class="summaryTableOwnerCol"><a href="../PlayableBase.html">PlayableBase</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="length"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">length</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>length:int</code>&nbsp;&nbsp;[read-only]<p>
+   The number of steps in the sequence.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get length():int</code>
+<br>
+</div>
+<a name="playIndex"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">playIndex</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>playIndex:int</code>&nbsp;&nbsp;[read-only]<p>
+   The current play index of the sequence, starting a 0.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get playIndex():int</code>
+<br>
+</div>
+<a name="repeater"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">repeater</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>repeater:<a href="../managers/Repeater.html">Repeater</a></code>&nbsp;&nbsp;[read-only]<p>
+   The sequence's Repeater instance, which may be used to make
+   the sequence loop and play more than one time.
+   
+   </p><p>The Repeater's cycles property can be set to an integer, or
+   to Repeater.INFINITE or 0 to repeat indefinitely.</p> 
+   
+   <pre>var seq:Sequence = new Sequence(tween1, tween2, tween3);
+   seq.repeater.cycles = 2;
+   seq.start();
+   trace(seq.repeater.currentCycle); // output: 0
+   
+   seq.skipTo(4); // moves to 2nd action in 2nd cycle
+   trace(seq.repeater.currentCycle); // output: 1</pre>
+   
+   <p>(The repeater property replaces the repeatCount and currentCount 
+   parameters in earlier releases of SequenceBase).</p>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get repeater():<a href="../managers/Repeater.html">Repeater</a></code>
+<br>
+</div>
+<a name="steps"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">steps</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>steps:Array</code>&nbsp;&nbsp;[read-write]<p>
+   Get or set the list of SequenceStep instances that defines the sequence. 
+   
+   </p><p>
+   When setting this property, each item must implement IPlayable that uses 
+   PlayableBase play-state constants and dispatches STOP or COMPLETE when finished. 
+   Each item is automatically wrapped in a SequenceStep if it is of any other IPlayable 
+   type, such as a GoItem or PlayableGroup. Setting this property stops any sequence 
+   play currently in progress.
+   </p>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get steps():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set steps(value:Array):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../utils/SequenceBase.html#_getStepAt()" target="">_getStepAt()</a>
+<br>
+<a href="../utils/SequenceBase.html#_getStepByID()" target="">_getStepByID()</a>
+<br>
+<a href="../utils/SequenceBase.html#_getCurrentStep()" target="">_getCurrentStep()</a>
+<br>
+<a href="../utils/SequenceBase.html#_getLastStep()" target="">_getLastStep()</a>
+</div>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="SequenceBase()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SequenceBase</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function SequenceBase(... items)</code><p>
+   Constructor.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code>... <span class="label">items</span></code> &mdash;  Any number of IPlayable instances (e.g. LinearGo, PlayableGroup,
+        SequenceStep) as separate arguments, or a single array of them.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="_addStep()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_addStep</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _addStep(item:<a href="../interfaces/IPlayable.html">IPlayable</a>, addToLastStep:Boolean = false, stepTypeAsClass:* = null):int</code><p>
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.
+   
+   </p><p>Drop the third parameter in your subclass' addStep method. Use it to be sure
+   the correct type of wrapper is created, as in SequenceCA.</p> 
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="../interfaces/IPlayable.html">IPlayable</a></code> &mdash;   The playable item to add to the sequence.
+         
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">addToLastStep</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; If true is passed the item is added to the last
+         existing SequenceStep in the steps array. This
+         option should be used with individual items that
+         you want added as children to the SequenceStep.
+         If there are no steps yet this option ignored and
+         a new step is created.
+         
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">stepTypeAsClass</span>:*</code> (default = <code>null</code>)<code></code> &mdash; Type for SequenceSteps. (Do not include this parameter in subclass addStep method.)
+      
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash; New length of the steps array.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_addStepAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_addStepAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _addStepAt(index:int, item:<a href="../interfaces/IPlayable.html">IPlayable</a>, stepTypeAsClass:* = null):int</code><p>
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.
+   
+   </p><p>Drop the third parameter in your subclass' addStep method. Use it to be sure
+   the correct type of wrapper is created, as in SequenceCA.</p> 
+   
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash;   Position in the array starting at 0, or a negative 
+         index like Array.splice.
+        
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="../interfaces/IPlayable.html">IPlayable</a></code> &mdash;   The playable item to splice into the sequence.
+         
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">stepTypeAsClass</span>:*</code> (default = <code>null</code>)<code></code> &mdash; Type for SequenceSteps. (Do not include this parameter in subclass addStep method.)
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>int</code> &mdash;     New length of the steps array.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_getCurrentStep()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_getCurrentStep</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _getCurrentStep():*</code><p>
+   Developers: Add a getter called <code>currentStep</code> to your subclass as in Sequence.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code> &mdash; Developers: return the correct SequenceStep type for your subclass in your corresponding public method.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_getLastStep()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_getLastStep</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _getLastStep():*</code><p>
+   Developers: Add a getter called <code>lastStep</code> to your subclass as in Sequence.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code> &mdash; Developers: return the correct SequenceStep type for your subclass in your corresponding public method.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_getStepAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_getStepAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _getStepAt(index:int):*</code><p>
+   Developers: Add a method called <code>getStepAt</code> to your subclass as in Sequence.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash; An array index starting at 0.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code> &mdash;  Developers: return the correct SequenceStep type for your subclass in your corresponding public method.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_getStepByID()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_getStepByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _getStepByID(id:*):*</code><p>
+   Developers: Add a method called <code>getStepByID</code> to your subclass as in Sequence.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">id</span>:*</code> &mdash; The step instance's id to search for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code> &mdash;  Developers: return the correct SequenceStep type for your subclass in your corresponding public method.
+   </td>
+</tr>
+</table>
+</div>
+<a name="_removeStepAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_removeStepAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function _removeStepAt(index:int):*</code><p>
+   Developers: Add a method called <code>addStep</code> to your subclass as in Sequence.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code> &mdash; Position in the array starting at 0, or a negative 
+       index like Array.splice.
+        
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>*</code> &mdash;   Developers: return the correct SequenceStep type for your subclass in your corresponding public method.
+   </td>
+</tr>
+</table>
+</div>
+<a name="pause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pause():Boolean</code><p>
+   Pauses sequence play.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;  Returns true unless sequence was unable to pause any children.
+   </td>
+</tr>
+</table>
+</div>
+<a name="resume()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resume</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function resume():Boolean</code><p>
+   Resumes previously-paused sequence play.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;  Returns true unless sequence was unable to resume any children.
+   </td>
+</tr>
+</table>
+</div>
+<a name="skipTo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">skipTo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function skipTo(index:Number):Boolean</code><p>
+   Stops the current step and skips to another step by sequence index.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:Number</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; Always returns true since the index is normalized to the sequence.
+   </td>
+</tr>
+</table>
+</div>
+<a name="start()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function start():Boolean</code><p>
+   Begins a sequence.
+   
+   </p><p>If the group is active when this method is called, a <code>stop</code> call 
+   is automated which will result in a GoEvent.STOP event being dispatched.</p>
+   
+   <p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; Returns true unless there are no steps in the sequence.
+   </td>
+</tr>
+</table>
+</div>
+<a name="stop()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function stop():Boolean</code><p>
+   Stops all activity and dispatches a GoEvent.STOP event.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; Returns true unless sequence was already stopped.
+   </td>
+</tr>
+</table>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:ADVANCE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ADVANCE</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/SequenceEvent.html"><code>org.goasap.events.SequenceEvent</code></a>
+<br>
+<span class="label">SequenceEvent.type property = </span><a href="../events/SequenceEvent.html#ADVANCE"><code>org.goasap.events.SequenceEvent.ADVANCE</code></a>
+<br><p>
+  Dispatched when the sequence advances to its next step.
+  </p></div>
+<a name="event:COMPLETE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">COMPLETE</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sequence successfully finishes. (In SequenceCA this event
+  is not fired until all custom-advanced steps have dispatched STOP or COMPLETE.)
+  </p></div>
+<a name="event:CYCLE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CYCLE</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched at the end the sequence if <code>repeatCount</code> is
+  higher than one, just before the sequence starts its next play cycle.
+  </p></div>
+<a name="event:PAUSE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PAUSE</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sequence is paused successfully.
+  </p></div>
+<a name="event:RESUME"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RESUME</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sequence is resumed successfully.
+  </p></div>
+<a name="event:START"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">START</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sequence starts.
+  </p></div>
+<a name="event:STOP"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">STOP</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the sequence is manually stopped, which may also occur
+  if one of its step instances is manually stopped outside the sequence.
+  </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->

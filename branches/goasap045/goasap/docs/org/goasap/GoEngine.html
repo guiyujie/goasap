@@ -1,0 +1,589 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
+<meta content="GoEngine,org.goasap.GoEngine,ENTER_FRAME,INFO,addItem,addManager,clear,getCount,getManager,getPaused,hasItem,removeItem,removeManager,setPaused" name="keywords">
+<title>org.goasap.GoEngine</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'GoEngine - Documentation';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?org/goasap/GoEngine.html&amp;org/goasap/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;GoEngine</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class GoEngine"); titleBar_setSubNav(true,false,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.goasap</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class GoEngine</td>
+</tr>
+</table>
+<p></p>
+  Provides <code>update</code> calls to <code>IUpdatable</code> instances on their specified <code>pulseInterval</code>.
+  
+  <p><b>Using these Docs</b></p>
+  
+  <p><i>Protected methods and properties have been excluded in almost all 
+  cases, but are documented in the classes. Exceptions include key protected
+  methods or properties that are integral for writing subclasses or understanding 
+  the basic mechanics of the system. Many Go classes can be used as is without 
+  subclassing, so the documentation offers an uncluttered view of their public
+  usage.</i></p>
+  
+  <p><b>Introduction to Go</b></p>
+  
+  <p>The Go ActionScript Animation Platform ("GOASAP") is a lightweight, portable 
+  set of generic base classes for buliding AS3 animation tools. It provides structure 
+  and core functionality, but does not define the specifics of animation-handling 
+  classes like tweens.</p>
+  
+  <p><i>Important: Store your custom Go classes in a package bearing your 
+  own classpath, not in the core package! This will help avoid confusion 
+  with other authors' work.</i></p>
+  
+  <p>You may modify any class in the goasap package to suit your project's needs.</p>
+   
+  <p>Go is a community initiative led by Moses Gunesch at 
+  <a href="http://www.mosessupposes.com/" target="_top">MosesSupposes.com</a>. Please visit the 
+  <a href="http://www.goasap.org/" target="_top">Go website</a> for more information.</p>
+  
+  <p><b>GoEngine</b></p>
+  
+  <p>GoEngine sits at the center of the Go system, and along with the IUpdatable 
+  interface is the only required element for using Go. GoEngine references two other 
+  interfaces for adding system-wide managers, IManager and IManageable.
+  All other classes in the go package are merely one suggestion of how a 
+  system could be structured within Go, and may be considered optional 
+  elements. To create an API using the provided classes, you simply need 
+  to extend the item classes LinearGo and PhysicsGo to create animation items.</p>
+  
+  <p>GoEngine serves two purposes: first, it keeps a large system efficient 
+  by stacking and running updates on blocks of items. Note that any IUpdatable 
+  instance may specify its own pulseInterval; items with matching pulses 
+  are grouped into queues for efficiency. Its second purpose is centralization. 
+  By using a single hub for pulse-driven items of all types, management classes 
+  can be attached to GoEngine to run processes across items. This is done voluntarily 
+  by the end-user with <code>addManager</code>, which keeps management entirely 
+  compile-optional and extensible.</p>
+  
+  <p>You normally don't need to modify this class to use Go. While Go items typically 
+  only use <code>addItem</code> and <code>removeItem</code>, your project's code might
+  use GoEngine to register managers, or to pause, resume or stop all Go animation in 
+  a SWF at once.</p>
+  
+  <p></i>{In the game of Go, the wooden playing board, or Goban, features a grid
+   on which black & white go-ishi stones are laid at its intersections.}</i></p>
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addItem()">addItem</a>(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Adds an IUpdatable instance to an update-queue corresponding to
+   the item's pulseInterval property.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addManager()">addManager</a>(instance:<a href="interfaces/IManager.html">IManager</a>):void</div>
+<div class="summaryTableDescription">[static]
+   Enables the extending of this class' functionality with a tight
+   coupling to an IManager.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clear()">clear</a>(pulseInterval:Number):uint</div>
+<div class="summaryTableDescription">[static]
+   Removes all items and resets the engine, 
+   or removes just items running on a specific pulse.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getCount()">getCount</a>(pulseInterval:Number):uint</div>
+<div class="summaryTableDescription">[static]
+   Retrieves number of active items in the engine 
+   or active items running on a specific pulse.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getManager()">getManager</a>(className:String):<a href="interfaces/IManager.html">IManager</a>
+</div>
+<div class="summaryTableDescription">[static]
+   </div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPaused()">getPaused</a>():Boolean</div>
+<div class="summaryTableDescription">[static]
+   </div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasItem()">hasItem</a>(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Test whether an item is currently stored and being updated by the engine.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeItem()">removeItem</a>(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</div>
+<div class="summaryTableDescription">[static]
+   Removes an item from the queue and removes its pulse timer if
+   the queue is depleted.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeManager()">removeManager</a>(className:String):void</div>
+<div class="summaryTableDescription">[static]
+   Unregisters any manager set in <code>addManager</code>.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setPaused()">setPaused</a>(pause:Boolean = true, pulseInterval:Number):uint</div>
+<div class="summaryTableDescription">[static]
+   Pauses or resumes all animation globally by suspending processing,
+   and calls pause() or resume() on each item with those methods.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ENTER_FRAME">ENTER_FRAME</a> : int = -1<div class="summaryTableDescription">[static]
+   A pulseInterval that runs on the player's natural framerate, 
+   which is often most efficient.</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#INFO">INFO</a> : String = "GoASAP 0.4.5 (c) Moses Gunesch, MIT Licensed."<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol">GoEngine</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addItem()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addItem</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function addItem(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</code><p>
+   Adds an IUpdatable instance to an update-queue corresponding to
+   the item's pulseInterval property.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="interfaces/IUpdatable.html">IUpdatable</a></code> &mdash;  Any object implementing IUpdatable that wishes 
+        to receive update calls on a pulse.
+        
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;   Returns false only if this item was already in the
+        engine under the same pulse. (If an existing item is added
+        but the pulseInterval has changed it will be removed,
+        re-added, and true will be returned.)
+        
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#removeItem()" target="">removeItem()</a>
+</div>
+</div>
+<a name="addManager()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function addManager(instance:<a href="interfaces/IManager.html">IManager</a>):void</code><p>
+   Enables the extending of this class' functionality with a tight
+   coupling to an IManager. 
+   
+   </p><p>Tight coupling is crucial in such a time-sensitive context; 
+   standard events are too asynchronous. All items that implement 
+   IManageable are reported to registered managers as they add and 
+   remove themselves from GoEngine.</p>
+   
+   <p>Managers normally act as singletons within the Go system (which 
+   you are welcome to modify). This method throws a DuplicateManagerError 
+   if an instance of the same manager class is already registered. Use a 
+   try/catch block when calling this method if your program might duplicate 
+   managers, or use getManager() to check for prior registration.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">instance</span>:<a href="interfaces/IManager.html">IManager</a></code> &mdash; An instance of a manager you wish to add.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#getManager()" target="">getManager()</a>
+<br>
+<a href="../goasap/GoEngine.html#removeManager()" target="">removeManager()</a>
+</div>
+</div>
+<a name="clear()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clear</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function clear(pulseInterval:Number):uint</code><p>
+   Removes all items and resets the engine, 
+   or removes just items running on a specific pulse.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">pulseInterval</span>:Number</code> &mdash;  Optionally filter by a specific pulse 
+          such as ENTER_FRAME or a number of milliseconds.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>uint</code> &mdash;     The number of items successfully removed.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#removeItem()" target="">removeItem()</a>
+</div>
+</div>
+<a name="getCount()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getCount</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getCount(pulseInterval:Number):uint</code><p>
+   Retrieves number of active items in the engine 
+   or active items running on a specific pulse.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">pulseInterval</span>:Number</code> &mdash;  Optionally filter by a specific pulseInterval
+         such as ENTER_FRAME or a number of milliseconds.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>uint</code> &mdash;     Number of active items in the Engine.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getManager()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getManager(className:String):<a href="interfaces/IManager.html">IManager</a></code><p>
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">className</span>:String</code> &mdash;  A string naming the manager class, such as "OverlapMonitor".
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="interfaces/IManager.html">IManager</a></code> &mdash; 
+                           The manager instance, if registered.
+   
+                        
+                     </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#addManager()" target="">addManager()</a>
+<br>
+<a href="../goasap/GoEngine.html#removeManager()" target="">removeManager()</a>
+</div>
+</div>
+<a name="getPaused()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPaused</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getPaused():Boolean</code><p>
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;   The paused state of engine.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#setPaused()" target="">setPaused()</a>
+</div>
+</div>
+<a name="hasItem()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasItem</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function hasItem(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</code><p>
+   Test whether an item is currently stored and being updated by the engine.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="interfaces/IUpdatable.html">IUpdatable</a></code> &mdash;  Any object implementing IUpdatable
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;   Whether the IUpdatable is in the engine
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeItem()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeItem</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function removeItem(item:<a href="interfaces/IUpdatable.html">IUpdatable</a>):Boolean</code><p>
+   Removes an item from the queue and removes its pulse timer if
+   the queue is depleted.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">item</span>:<a href="interfaces/IUpdatable.html">IUpdatable</a></code> &mdash;  Any IUpdatable previously added that wishes 
+        to stop receiving update calls.
+        
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash;   Returns false if the item was not in the engine.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#addItem()" target="">addItem()</a>
+</div>
+</div>
+<a name="removeManager()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function removeManager(className:String):void</code><p>
+   Unregisters any manager set in <code>addManager</code>.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">className</span>:String</code> &mdash;  A string naming the manager class, such as "OverlapMonitor".
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#getManager()" target="">getManager()</a>
+<br>
+<a href="../goasap/GoEngine.html#addManager()" target="">addManager()</a>
+</div>
+</div>
+<a name="setPaused()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setPaused</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function setPaused(pause:Boolean = true, pulseInterval:Number):uint</code><p>
+   Pauses or resumes all animation globally by suspending processing,
+   and calls pause() or resume() on each item with those methods. 
+   
+   </p><p>The return value only reflects how many items had pause() or resume()
+   called on them, but the GoEngine.getPaused() state will change if any 
+   pulses are suspended or resumed.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">pause</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash;    Pass false to resume if currently paused.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pulseInterval</span>:Number</code> &mdash;  Optionally filter by a specific pulse 
+          such as ENTER_FRAME or a number of milliseconds.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>uint</code> &mdash;     The number of items on which a pause() or resume()
+          method was called (0 doesn't necessarily reflect
+          whether the GoEngine.getPaused() state changed, it
+          may simply indicate that no items had that method).
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../goasap/GoEngine.html#resume()" target="">resume()</a>
+</div>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="ENTER_FRAME"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ENTER_FRAME</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ENTER_FRAME:int = -1</code><p>
+   A pulseInterval that runs on the player's natural framerate, 
+   which is often most efficient.
+   </p></div>
+<a name="INFO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">INFO</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const INFO:String = "GoASAP 0.4.5 (c) Moses Gunesch, MIT Licensed."</code>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright"> 
+</center>
+</div>
+</body>
+</html>
+<!-- -->
