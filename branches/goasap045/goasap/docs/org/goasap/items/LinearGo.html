@@ -595,6 +595,8 @@ showHideInherited();
 <div class="detailBody">
 <code>public static var defaultEasing:Function</code><p>
    Class default for the instance property easing.
+   Note that this property is left null until the first LinearGo
+   is instantiated, at which time it is set to Quintic.easeOut.
    </p><p>The default value is <code>fl.motion.easing.Quintic.easeOut</code>.</p>
 <p>
 <span class="label">See also</span>
@@ -833,7 +835,10 @@ showHideInherited();
 <code>public function LinearGo(delay:Number, duration:Number, easing:Function = null, extraEasingParams:Array = null, repeater:<a href="../managers/LinearGoRepeater.html">LinearGoRepeater</a> = null, useRelative:Boolean = false, useRounding:Boolean = false, useFrames:Boolean = false, pulseInterval:Number)</code><p>
    The inputs here are not a convention, subclasses should design
    their own constructors appropriate to usage. They are provided
-   here primarily as a convenience for subclasses.
+   here primarily as a convenience for subclasses. However, do not
+   omit calling super() from subclass constructors: LinearGo's
+   constructor sets and validates class defaults and sets up the
+   repeater instance.
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>

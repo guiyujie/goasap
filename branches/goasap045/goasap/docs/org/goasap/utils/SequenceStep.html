@@ -90,8 +90,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="PlayableGroup.html#listenerCount">listenerCount</a> : uint<div class="summaryTableDescription">
-   Determines the number of listeners currently being monitored 
-   by the group.</div>
+   Determines the number of children currently being monitored 
+   for completion by the group.</div>
+</td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="PlayableGroup.html#repeater">repeater</a> : <a href="../managers/Repeater.html">Repeater</a>
+<div class="summaryTableDescription">
+   The groups's Repeater instance, which may be used to make
+   it loop and play more than one time.</div>
 </td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -152,10 +159,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="PlayableGroup.html#addChild()">addChild</a>(item:<a href="../interfaces/IPlayable.html">IPlayable</a>, adoptChildState:Boolean = false):Boolean</div>
 <div class="summaryTableDescription">
-   Adds a single IPlayable to the children array (duplicates are rejected), and optionally
-   changes the group's play-state to match the state of the new child.</p>
-   
-   </div>
+   Adds a single IPlayable to the children array (duplicates are rejected) and
+   syncs up the group and child play-states based on various conditions.</div>
 </td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -257,6 +262,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </div>
 </td><td class="summaryTableDescription summaryTableCol">
   Dispatched after all children have dispatched a STOP or COMPLETE event.</td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="PlayableGroup.html#event:CYCLE">CYCLE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched at the end the group if <code>repeater.cycles</code> is set to
+  a value other than one, just before the group starts its next play cycle.</td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="PlayableGroup.html#event:PAUSE">PAUSE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the group is paused successfully.</td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="PlayableGroup.html#event:RESUME">RESUME</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the group is resumed successfully.</td><td class="summaryTableOwnerCol"><a href="PlayableGroup.html">PlayableGroup</a></td>
 </tr>
 <tr class="hideInheritedEvent">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">

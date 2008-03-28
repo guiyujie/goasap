@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="PlayableGroup,org.goasap.utils.PlayableGroup,children,listenerCount,addChild,anyChildHasState,getChildByID,pause,removeChild,resume,skipTo,start,stop" name="keywords">
+<meta content="PlayableGroup,org.goasap.utils.PlayableGroup,children,listenerCount,repeater,addChild,anyChildHasState,getChildByID,pause,removeChild,resume,skipTo,start,stop" name="keywords">
 <title>org.goasap.utils.PlayableGroup</title>
 </head>
 <body>
@@ -50,10 +50,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <p></p>
   Batch-play a set of items and receive an event when all of them have finished.
   
-  <p>
-  The group listens for both STOP and COMPLETE events from its children, 
-  either of which are counted toward group completion.
-  </p>
+  <p>PlayableGroup accepts any IPlayable for its children, which can include
+  tweens, other groups, sequences and so forth. The group listens for both 
+  GoEvent.STOP and GoEvent.COMPLETE events from its children, either of which 
+  are counted toward group completion.</p>
+  
+  <p>The <code>repeater</code> property of PlayableGroup allows you to loop play 
+  any number of times, or indefinitely by setting its cycles to Repeater.INFINITE. 
+  GoEvent.CYCLE is dispatched on each loop and GoEvent.COMPLETE when finished.
+  Other events dispatched include the GoEvent types START, STOP, PAUSE, and RESUME.</p>
   
   <p></p>
 <br>
@@ -87,8 +92,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#listenerCount">listenerCount</a> : uint<div class="summaryTableDescription">[read-only]
-   Determines the number of listeners currently being monitored 
-   by the group.</div>
+   Determines the number of children currently being monitored 
+   for completion by the group.</div>
+</td><td class="summaryTableOwnerCol">PlayableGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#repeater">repeater</a> : <a href="../managers/Repeater.html">Repeater</a>
+<div class="summaryTableDescription">[read-only]
+   The groups's Repeater instance, which may be used to make
+   it loop and play more than one time.</div>
 </td><td class="summaryTableOwnerCol">PlayableGroup</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -149,10 +161,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#addChild()">addChild</a>(item:<a href="../interfaces/IPlayable.html">IPlayable</a>, adoptChildState:Boolean = false):Boolean</div>
 <div class="summaryTableDescription">
-   Adds a single IPlayable to the children array (duplicates are rejected), and optionally
-   changes the group's play-state to match the state of the new child.</p>
-   
-   </div>
+   Adds a single IPlayable to the children array (duplicates are rejected) and
+   syncs up the group and child play-states based on various conditions.</div>
 </td><td class="summaryTableOwnerCol">PlayableGroup</td>
 </tr>
 <tr class="">
@@ -250,6 +260,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#event:CYCLE">CYCLE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched at the end the group if <code>repeater.cycles</code> is set to
+  a value other than one, just before the group starts its next play cycle.</td><td class="summaryTableOwnerCol">PlayableGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:PAUSE">PAUSE</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the group is paused successfully.</td><td class="summaryTableOwnerCol">PlayableGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:RESUME">RESUME</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the group is resumed successfully.</td><td class="summaryTableOwnerCol">PlayableGroup</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#event:START">START</a>
 </div>
 </td><td class="summaryTableDescription summaryTableCol">
@@ -335,11 +370,36 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>listenerCount:uint</code>&nbsp;&nbsp;[read-only]<p>
-   Determines the number of listeners currently being monitored 
-   by the group.
+   Determines the number of children currently being monitored 
+   for completion by the group.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get listenerCount():uint</code>
+<br>
+</div>
+<a name="repeater"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">repeater</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>repeater:<a href="../managers/Repeater.html">Repeater</a></code>&nbsp;&nbsp;[read-only]<p>
+   The groups's Repeater instance, which may be used to make
+   it loop and play more than one time.
+   
+   </p><p>The Repeater's cycles property can be set to an integer, or
+   to Repeater.INFINITE or 0 to repeat indefinitely.</p> 
+   
+   <pre>
+   var group:PlayableGroup = new PlayableGroup(tween1, tween2, tween3);
+   group.repeater.cycles = 2;
+   group.start();
+   trace(group.repeater.currentCycle); // output: 0
+   </pre>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get repeater():<a href="../managers/Repeater.html">Repeater</a></code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -373,10 +433,26 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function addChild(item:<a href="../interfaces/IPlayable.html">IPlayable</a>, adoptChildState:Boolean = false):Boolean</code><p>
-   Adds a single IPlayable to the children array (duplicates are rejected), and optionally
-   changes the group's play-state to match the state of the new child.</p>
+   Adds a single IPlayable to the children array (duplicates are rejected) and
+   syncs up the group and child play-states based on various conditions.
    
-   </p><span class="label">Parameters</span>
+   </p><p>If both the group and the item being added are STOPPED, the item is simply
+   added to the children list.</p>
+   
+   <p>If both items are PAUSED or PLAYING (including PLAYING_DELAY for children), 
+   the child is actively added to the group during play and will be monitored for 
+   completion along with others.</p>
+   
+   <p>In other cases where the child's state mismatches the group's state, there
+   are several behaviors available. Normally if the second parameter <code>adoptChildState</code>
+   is left false, the child's mismatched state will be updated to match the group's
+   state. This can result in it being stopped, paused, or started/resumed and monitored 
+   for completion along with other children. Passing true for <code>adoptChildState</code> 
+   results in updating the group's state to match the child's. This option could be used, for 
+   example, if you wanted to build a group of already-playing items without disrupting their
+   play cycle with a start() call to the group.</p>
+   
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">item</span>:<a href="../interfaces/IPlayable.html">IPlayable</a></code> &mdash;    Any instance that implements IPlayable and uses PlayableBase's play-state constants.
@@ -617,6 +693,43 @@ showHideInherited();
 <br>
 <p></p><p>
   Dispatched after all children have dispatched a STOP or COMPLETE event.
+  </p></div>
+<a name="event:CYCLE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CYCLE</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched at the end the group if <code>repeater.cycles</code> is set to
+  a value other than one, just before the group starts its next play cycle.
+  </p></div>
+<a name="event:PAUSE"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PAUSE</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the group is paused successfully.
+  </p></div>
+<a name="event:RESUME"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">RESUME</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/GoEvent.html"><code>org.goasap.events.GoEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the group is resumed successfully.
   </p></div>
 <a name="event:START"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
