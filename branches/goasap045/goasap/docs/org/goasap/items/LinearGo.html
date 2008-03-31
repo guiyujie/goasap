@@ -526,16 +526,15 @@ showHideInherited();
    </p><p>This update-count property does not necessarily correspond 
    to the actual player framerate, just the instance's pulseInterval.</p>
    
-   <p>The currentFrame continues to increase as long as the 
-   tween is active, including through delay, duration, and all subsequent 
-   cycles. So a multi-cycle tween is more like a set of back-to-back 
-   tweens in a timeline than a playhead that scans back and forth.
-   This differs significantly from <code>timePosition</code> which does
-   step values back-and-forth during cycles within the duration range.</p> 
+   <p>This property is set up to mirror the flash timeline. Imagine a timeline 
+   layer with a delay being a set of blank frames followed by the tween, 
+   followed by subsequent cycles as additional tweens: this is the way 
+   the <code>currentFrame</code> property works. Its first value is 1 by 
+   default, which can be changed to 0 in <code>setupUseFramesMode()</code>.
+   This differs significantly from <code>timePosition</code>, which places 
+   the start of a single instance of the tween at frame 1 and steps its
+   values from negative during delay then cycling through the single tween.</p> 
    
-   <p>This property is set up to mirror the flash timeline in that
-   its first value will always be 1. This can be changed in 
-   <code>setupUseFramesMode()</code>.</p>
    
    <span class="label">Implementation</span>
 <br>
@@ -785,10 +784,11 @@ showHideInherited();
    </p><p>In useFrames mode, this getter differs from <code>currentFrame</code>
    significantly. Instead of constantly increasing through all cycles as if
    tweens were back-to-back in a timeline layer, this method acts more like
-   a single tween with a timeline playhead that scans back and forth during
-   cycles. So for a 10-frame tween with a 5-frame delay and 2 cycles, this 
-   method will start at -5, start the animation at 1, play to 10 then step
-   backward to 1 again.</p>
+   a single tween placed at frame 1, with a timeline playhead that scans back 
+   and forth or loops during cycles. So for a 10-frame tween with a 5-frame 
+   delay and 2 repeater cycles with reverseOnCycle set to true, this method 
+   will return values starting at -5, start the animation at 1, play to 10 
+   then step backward to 1 again.</p>
    
    <span class="label">Implementation</span>
 <br>
