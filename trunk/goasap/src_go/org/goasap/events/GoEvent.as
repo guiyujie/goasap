@@ -46,6 +46,30 @@ package org.goasap.events {
 		
 		
 	    /**
+	     * Indicates a playable instance was paused.
+	     * 
+	     * @eventType playableUpdate
+	     */
+	    public static const PAUSE : String = 'playablePause';
+		
+		
+	    /**
+	     * Indicates a playable instance was restarted from a paused state.
+	     * 
+	     * @eventType playableUpdate
+	     */
+	    public static const RESUME : String = 'playableResume';
+		
+		
+	    /**
+	     * Indicates a playable instance has completed a cycle or loop and is starting the next one.
+	     * 
+	     * @eventType playableUpdate
+	     */
+	    public static const CYCLE : String = 'playableCycle';
+		
+		
+	    /**
 	     * Indicates a playable instance was manually stopped.
 	     * 
 	     * @eventType playableStop
