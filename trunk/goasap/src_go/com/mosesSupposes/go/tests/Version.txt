@@ -1,4 +1,4 @@
-Use with Go version 0.4.2 or higher.
+Use with Go version 0.4.7 or higher.
 
 To run a test, make a new fla, drag the 
 Button component from the components panel
