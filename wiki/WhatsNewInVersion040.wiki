@@ -1,3 +1,13 @@
+This page is updated sporadically, for details click Source > Changes above.
+
+*0.4.7 notes*
+  * Added new Repeater & !LinearGoRepeater classes.
+  * !LinearGo, !PlayableGroup and sequence classes now sport repeater instances.
+  * Added new event types to !GoEvent and playable classes: PAUSE, RESUME and CYCLE.
+  * useFrames support added to !LinearGo
+  * id property of !PlayableBase changed to playableID (v0.4.8) to avoid conflicts, id was too generic.
+  * static _playRetainer property added to !PlayableBase for stashing refs to self during play cycle (v0.4.4)
+
 *0.4.2 notes*
 
   * Totally new tests package with !GoTestBase class and tutorial classes
