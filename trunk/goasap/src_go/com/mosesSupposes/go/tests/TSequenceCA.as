@@ -56,11 +56,15 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 		{
 			// SequenceCA has "Custom Advance" options
 			seq = new SequenceCA();
-			seq.id = "seq";
-			seq.addEventListener(GoEvent.START, traceEvent);
-			seq.addEventListener(GoEvent.STOP, traceEvent);
-			seq.addEventListener(GoEvent.COMPLETE, traceEvent);
-			seq.addEventListener(SequenceEvent.ADVANCE, traceEvent);
+			seq.playableID = "seq";
+
+			seq.addEventListener(GoEvent.START, super.traceEvent);
+			seq.addEventListener(GoEvent.STOP, super.traceEvent);
+			seq.addEventListener(GoEvent.PAUSE, super.traceEvent);
+			seq.addEventListener(GoEvent.RESUME, super.traceEvent);
+			seq.addEventListener(GoEvent.CYCLE, super.traceEvent);
+			seq.addEventListener(GoEvent.COMPLETE, super.traceEvent);
+			seq.addEventListener(SequenceEvent.ADVANCE, super.traceEvent);
 			
 			box1 = box(20);
 			box2 = box(40);
@@ -84,7 +88,7 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 				// this is a custom advance at 1 second. (See docs for others: OnEventComplete, etc.)
 				// We're actually adding it to a SequenceStepCA, which is auto-generated to wrap the tween.
 				seq.lastStep.advance = new OnDurationComplete(1);
-				seq.lastStep.id = "Step#"+i; // the term lastStep means the final step in the sequence.
+				seq.lastStep.playableID = "Step#"+i; // the term lastStep means the final step in the sequence.
 			}
 			
 			super.addHeaderText("SequenceCA: adds 'custom advance' functionality to sequencing.\n" +
