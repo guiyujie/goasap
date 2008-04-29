@@ -34,7 +34,7 @@ package com.mosesSupposes.go.tests {
 			
 			// Width tween
 			tween1 = new SizeTweenMG(target);
-			tween1.id = "tween1";
+			tween1.playableID = "tween1";
 			tween1.easing = Linear.easeNone;
 			tween1.duration = 3;
 //			tween1.startWidth = 10;
@@ -43,7 +43,7 @@ package com.mosesSupposes.go.tests {
 			
 			// WIdth & height tween
 			tween2 = new SizeTweenMG(target);
-			tween2.id = "tween2";
+			tween2.playableID = "tween2";
 			tween2.easing = Linear.easeNone;
 			tween2.duration = 3;
 			tween2.width = 150;
@@ -54,7 +54,7 @@ package com.mosesSupposes.go.tests {
 			
 			// WIdth & height tween + delay
 			tween3 = new SizeTweenMG(target);
-			tween3.id = "tween3";
+			tween3.playableID = "tween3";
 			tween3.easing = Linear.easeNone;
 			tween3.duration = 3;
 //			tween3.startHeight = 10;
