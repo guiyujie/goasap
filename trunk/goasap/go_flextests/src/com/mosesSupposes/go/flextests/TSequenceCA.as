@@ -1,5 +1,5 @@
 
-package com.mosesSupposes.go.tests {	import flash.display.Sprite;
+package com.mosesSupposes.go.flextests {	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
@@ -12,15 +12,15 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 	
 	import com.mosesSupposes.go.tutorials.SizeTweenMG;
 	
-	import fl.controls.Button;
-	import fl.motion.easing.*;	
+	import mx.controls.Button;
+	import mx.effects.easing.*;	
 
 		// Extensions of Go should live in your personal classpath!
 	
 	/**
 	 *  @author Moses Gunesch
 	 */
-	public class TSequenceCA extends GoTestBase {
+	public class TSequenceCA extends GoFlexTestBase {
 		
 		protected var seq : SequenceCA;
 		

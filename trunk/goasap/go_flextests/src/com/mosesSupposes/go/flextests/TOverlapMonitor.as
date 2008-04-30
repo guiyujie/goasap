@@ -1,11 +1,11 @@
 
-package com.mosesSupposes.go.tests {
-	import flash.display.Sprite;	import flash.events.MouseEvent;		import org.goasap.GoEngine;	import org.goasap.events.GoEvent;	import org.goasap.managers.OverlapMonitor;		import com.mosesSupposes.go.tutorials.SizeTweenMG;		import fl.controls.Button;	import fl.motion.easing.*;		// The Go core package will not include any tweens!
+package com.mosesSupposes.go.flextests {
+	import com.mosesSupposes.go.tutorials.SizeTweenMG;		import flash.display.Sprite;	import flash.events.MouseEvent;		import mx.controls.Button;	import mx.effects.easing.*;		import org.goasap.GoEngine;	import org.goasap.events.GoEvent;	import org.goasap.managers.OverlapMonitor;		// The Go core package will not include any tweens!
 	
 	/**
 	 * @author Moses Gunesch
 	 */
-	public class TOverlapMonitor extends GoTestBase {
+	public class TOverlapMonitor extends GoFlexTestBase {
 		
 		protected var tween1 : SizeTweenMG;		
 		protected var tween2 : SizeTweenMG;		
