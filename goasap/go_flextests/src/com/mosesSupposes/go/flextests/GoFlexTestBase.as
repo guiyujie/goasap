@@ -1,25 +1,30 @@
 
-package com.mosesSupposes.go.tests {	import flash.display.Sprite;
+package com.mosesSupposes.go.flextests {
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.utils.Dictionary;
 	
 	import mx.controls.Button;
+	import mx.core.UIComponent;
 	
 	import org.goasap.PlayableBase;
 	import org.goasap.events.GoEvent;
 	import org.goasap.events.SequenceEvent;
 	import org.goasap.interfaces.IPlayable;
-	import org.goasap.utils.SequenceBase;
-	
-	/**	 * 1. Extend this class with a test. 
+	import org.goasap.utils.SequenceBase;	
+
+	/**
+	 * 1. Extend this class with a test. 
 	 * 2. Make one or more targets passing a yOffset, like box(20);
 	 * 3. Set the public var playable to whatever go object you want the buttons to control. 
 	 * 4. Optionally set skipToAmount.
 	 * 5. A convenient traceEvent method is provided for adding listeners on your go instances.
 	 * 
-	 * @author Moses Gunesch	 */	public class GoFlexTestBase extends Sprite {
+	 * @author Moses Gunesch
+	 */
+	public class GoFlexTestBase extends UIComponent {
 		
 		protected var buttonX: Number = 20;
 		protected var buttonY: Number = 20;
@@ -66,6 +71,8 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 			b.label = label;
 			b.x = buttonX;
 			b.y = buttonY;
+			b.width = 110;
+			b.height = 22;
 			buttonX += b.width + 10; 
 			b.addEventListener(MouseEvent.MOUSE_DOWN, onClick);
 			return b;
@@ -93,7 +100,7 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 		
 		protected function box(yOffset : Number = 0) : Sprite 
 		{
-			var s : Sprite = new Sprite();
+			var s:Sprite = new Sprite();
 			s.graphics.beginFill(0xFF3300);
 			s.graphics.drawRect(0, 0, 10, 10);
 			this.addChild(s);
@@ -127,4 +134,5 @@ package com.mosesSupposes.go.tests {	import flash.display.Sprite;
 				playable.skipTo(Number(skipToAmounts[playable]));
 			}
 		}
-	}}
+	}
+}

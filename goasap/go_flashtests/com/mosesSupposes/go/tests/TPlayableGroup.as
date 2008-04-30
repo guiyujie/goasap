@@ -6,7 +6,7 @@ package com.mosesSupposes.go.tests {
 	
 	import com.mosesSupposes.go.tutorials.SizeTweenMG;
 	
-	import fl.motion.easing.*;	
+	import fl.motion.easing.Bounce;	
 
 	// Extensions of Go should live in your personal classpath!
 	
@@ -29,6 +29,9 @@ package com.mosesSupposes.go.tests {
 			group = new PlayableGroup();
 			group.addEventListener(GoEvent.START, super.traceEvent);
 			group.addEventListener(GoEvent.STOP, super.traceEvent);
+			group.addEventListener(GoEvent.PAUSE, super.traceEvent);
+			group.addEventListener(GoEvent.RESUME, super.traceEvent);
+			group.addEventListener(GoEvent.CYCLE, super.traceEvent);
 			group.addEventListener(GoEvent.COMPLETE, super.traceEvent);
 			
 			for (var i:Number=0; i<10; i++) {
