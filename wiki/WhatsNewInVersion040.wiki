@@ -1,12 +1,19 @@
 This page is updated sporadically, for details click Source > Changes above.
 
+*0.4.9 notes*
+Improves GoASAP's management layer.
+  * All managers are now accessed by !GoEngine in the order they are added, so various duties can be carefully ordered.
+  * NEW INTERFACE: ILiveManager. !GoEngine has been altered so that any managers that implement this interface receive a special onUpdate() callback after each update cycle.
+  * !OverlapMonitor has been rewritten to use Dictionaries instead of Arrays to store handlers internally, and to correct an efficiency flaw in release().
+  * Also: !GoItem.defaultPulseInterval has been set back to ENTER_FRAME. (While 33ms does perform faster on benchmarks with thousands of animations, ENTER_FRAME runs much smoother in practical contexts.)
+
 *0.4.7 notes*
   * Added new Repeater & !LinearGoRepeater classes.
   * !LinearGo, !PlayableGroup and sequence classes now sport repeater instances.
   * Added new event types to !GoEvent and playable classes: PAUSE, RESUME and CYCLE.
   * useFrames support added to !LinearGo
   * id property of !PlayableBase changed to playableID (v0.4.8) to avoid conflicts, id was too generic.
-  * static _playRetainer property added to !PlayableBase for stashing refs to self during play cycle (v0.4.4)
+  * static __playRetainer property added to !PlayableBase for stashing refs to self during play cycle (v0.4.4)
 
 *0.4.2 notes*
 
