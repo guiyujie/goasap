@@ -1,20 +1,6 @@
 
-package com.mosesSupposes.go.tests {	import flash.display.MovieClip;
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.text.TextField;
-	import flash.utils.Dictionary;
-	
-	import org.goasap.PlayableBase;
-	import org.goasap.events.GoEvent;
-	import org.goasap.events.SequenceEvent;
-	import org.goasap.interfaces.IPlayable;
-	import org.goasap.utils.SequenceBase;
-	
-	import fl.controls.Button;	
-
-	/**	 * 1. Extend this class with a test. 
+package com.mosesSupposes.go.tests {	import flash.display.MovieClip;	import flash.display.Sprite;	import flash.events.Event;	import flash.events.MouseEvent;	import flash.text.TextField;	import flash.utils.Dictionary;		import org.goasap.PlayStates;	import org.goasap.events.GoEvent;	import org.goasap.events.SequenceEvent;	import org.goasap.interfaces.IPlayable;	import org.goasap.utils.SequenceBase;		import fl.controls.Button;	
+	/**	 * 1. Extend this class with a test. 
 	 * 2. Make one or more targets passing a yOffset, like box(20);
 	 * 3. Set the public var playable to whatever go object you want the buttons to control. 
 	 * 4. Optionally set skipToAmount.
@@ -119,7 +105,7 @@ package com.mosesSupposes.go.tests {	import flash.display.MovieClip;
 				playable.stop();
 			}
 			else if (button.label.indexOf("pause")==0) {
-				if (playable.state == PlayableBase.PAUSED)
+				if (playable.state == PlayStates.PAUSED)
 					playable.resume();
 				else
 					playable.pause();

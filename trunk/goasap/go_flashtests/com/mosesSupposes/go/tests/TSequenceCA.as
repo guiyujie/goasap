@@ -1,20 +1,18 @@
 
 package com.mosesSupposes.go.tests {	import flash.display.Sprite;
-	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	import org.goasap.PlayableBase;
-	import org.goasap.events.*;
+	import org.goasap.events.GoEvent;
+	import org.goasap.events.SequenceEvent;
 	import org.goasap.interfaces.IPlayable;
-	import org.goasap.items.*;
-	import org.goasap.utils.*;
-	import org.goasap.utils.customadvance.*;
+	import org.goasap.utils.SequenceCA;
+	import org.goasap.utils.customadvance.OnDurationComplete;
 	
 	import com.mosesSupposes.go.tutorials.SizeTweenMG;
 	
 	import fl.controls.Button;
 	import fl.motion.easing.Linear;	
-
+	
 	// Extensions of Go should live in your personal classpath!
 	
 	/**

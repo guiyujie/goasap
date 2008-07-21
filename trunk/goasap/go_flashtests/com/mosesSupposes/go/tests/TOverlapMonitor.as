@@ -12,8 +12,6 @@ package com.mosesSupposes.go.tests {
 	import fl.controls.Button;
 	import fl.motion.easing.*;	
 
-	// The Go core package will not include any tweens!
-	
 	/**
 	 * @author Moses Gunesch
 	 */

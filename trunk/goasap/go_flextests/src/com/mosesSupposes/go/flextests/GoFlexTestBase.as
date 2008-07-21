@@ -9,7 +9,7 @@ package com.mosesSupposes.go.flextests {
 	import mx.controls.Button;
 	import mx.core.UIComponent;
 	
-	import org.goasap.PlayableBase;
+	import org.goasap.PlayStates;
 	import org.goasap.events.GoEvent;
 	import org.goasap.events.SequenceEvent;
 	import org.goasap.interfaces.IPlayable;
@@ -125,7 +125,7 @@ package com.mosesSupposes.go.flextests {
 				playable.stop();
 			}
 			else if (button.label.indexOf("pause")==0) {
-				if (playable.state == PlayableBase.PAUSED)
+				if (playable.state == PlayStates.PAUSED)
 					playable.resume();
 				else
 					playable.pause();
